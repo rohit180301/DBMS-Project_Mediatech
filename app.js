@@ -18,7 +18,9 @@ require('./passport/google.passport');
 const app = express();
 //Express config
 app.use(cookieParser());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ 
+    extended: false
+}));
 app.use(bodyParser.json());
 app.use(session({ 
     secret: 'keyboard cat',
@@ -28,7 +30,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 //set gobal vars for user
-app.use((req,res,next)=>{
+app.use((req,res,next)=> {
     res.locals.user = req.user || null;
     next();
 });
@@ -39,16 +41,16 @@ app.engine('handlebars',exphbs({
 }));
 
 app.set('view engine','handlebars');
-//sertup static file to serve css,javascript and images
+//setup static file to serve css,javascript and images
 app.use(express.static('public'));
 //connect to remote database
 mongoose.Promise =global.Promise;
 mongoose.connect(keys.MongoURI,{
     useNewUrlParser:true
 })
-.then(()=>{
+.then(() =>{
     console.log('Connected to Remote Database.....');
-}).catch((err)=>{
+}).catch((err) =>{
     console.log(err);
 });
 //set environment variable for port
@@ -77,7 +79,7 @@ app.get('/auth/google/callback',
     // Successful authentication, redirect home.
     res.redirect('/profile');
     });
-app.get('/profile',(req,res)=>{
+app.get('/profile',(req,res) =>{
     User.findById({_id: req.user._id})
     .then((user)=> {
         res.render('profile',{
