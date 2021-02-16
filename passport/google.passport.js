@@ -1,7 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const User = require('../models/user');
-
 const keys = require('../config/keys');
 
 passport.serializeUser(function(user, done) {
@@ -15,18 +14,18 @@ passport.deserializeUser(function(id, done) {
 });
 
 passport.use(new GoogleStrategy({
-    clientID:keys.GoogleClientID,
-    clientSecret:keys.GoogleClientSecret,
-    callbackURL:"/auth/google/callback",
+    clientID: keys.GoogleClientID,
+    clientSecret: keys.GoogleClientSecret,
+    callbackURL: "/auth/google/callback",
     proxy:true
   },
-(accessToken, refreshToken, profile, done)=> {
+    (accessToken, refreshToken, profile, done) => {
       console.log(profile);
       User.findOne({
         google : profile.id
-      }).then((user)=>{
+      }).then((user) => {
         if(user){
-          done(null,user);
+          done(null, user);
         }else{
           const newUser ={
             google : profile.id,
@@ -38,7 +37,7 @@ passport.use(new GoogleStrategy({
           }
           //Save new user into database
         new User(newUser).save()
-        .then((user)=>{
+        .then((user) => {
           done(null,user);
         })
         }

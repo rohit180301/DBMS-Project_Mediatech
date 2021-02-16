@@ -1,8 +1,8 @@
 //Load modules
 const express = require('express');
-const Handlebars = require('handlebars')
+const Handlebars = require('handlebars');
 const exphbs = require('express-handlebars');
-const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
 
 const mongoose = require('mongoose');
 const passport = require('passport');
@@ -52,11 +52,10 @@ mongoose.connect(keys.MongoURI,{
     console.log(err);
 });
 //set environment variable for port
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 
 //Handle routes
-app.get('/',(req, res)=>
-{
+app.get('/',(req, res)=>{
     res.render('home');
 });
 
@@ -74,23 +73,26 @@ app.get('/auth/google/callback',
     passport.authenticate('google', { 
         failureRedirect: '/'
     }),
-(req, res) =>{
+    (req, res) =>{
     // Successful authentication, redirect home.
     res.redirect('/profile');
     });
 app.get('/profile',(req,res)=>{
     User.findById({_id: req.user._id})
-    .then((user)=>{
+    .then((user)=> {
         res.render('profile',{
             user:user
-    });
+        });
     })
 });
 //Handle User logout route
-app.get('/logout',(req,res)=>{
+app.get('/logout',(req, res) =>{
     req.logout();
     res.redirect('/');
 });  
-app.listen(port, () =>{
-    console.log('Server is running on port 3000');
+// app.listen(port, () =>{
+    // console.log('Server is running on port 3000');
+// });
+app.listen(process.env.PORT || 3000, function(){
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
