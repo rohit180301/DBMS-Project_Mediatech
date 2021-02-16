@@ -4,7 +4,7 @@
   "description": "Making social media application",
   "main": "app.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node app.js"
   },
   "author": "Rohit Shinde",
   "license": "ISC",
