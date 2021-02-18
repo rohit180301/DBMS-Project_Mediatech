@@ -13,7 +13,9 @@ const cookieParser = require('cookie-parser');
 const keys = require('./config/keys');
 //User collection
 const User = require('./models/user');
+//Link passports to the server
 require('./passport/google.passport');
+require('./passport/facebook-passport');
 //initialize application
 const app = express();
 //Express config
@@ -77,9 +79,22 @@ app.get('/auth/google/callback',
     }),
     (req, res) =>{
     // Successful authentication, redirect home.
-    res.redirect('/profile');
+        res.redirect('/profile');
     });
-app.get('/profile',(req,res) =>{
+//FACEBOOK AUTH ROUTE
+app.get('/auth/facebook',
+    passport.authenticate('facebook'));
+
+app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {      
+        failureRedirect: '/' 
+    }),
+    (req, res) => {
+    // Successful authentication, redirect home.
+        res.redirect('/profile');
+});  
+//Handle profile route 
+app.get('/profile',(req,res) => {
     User.findById({_id: req.user._id})
     .then((user)=> {
         res.render('profile',{
@@ -93,7 +108,7 @@ app.get('/logout',(req, res) =>{
     res.redirect('/');
 });  
 app.listen(port, () =>{
-    console.log('Server is running on port 3000');
+    console.log(`server is running on port ${port}`);
 });
 
 // app.listen(process.env.PORT || 3000, function(){
