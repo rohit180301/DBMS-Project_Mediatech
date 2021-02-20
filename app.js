@@ -26,8 +26,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(session({ 
     secret: 'keyboard cat',
-    resave:true,
-    saveUninitialized :true
+    resave: true,
+    saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -111,6 +111,3 @@ app.listen(port, () =>{
     console.log(`server is running on port ${port}`);
 });
 
-// app.listen(process.env.PORT || 3000, function(){
-    // console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-// });
