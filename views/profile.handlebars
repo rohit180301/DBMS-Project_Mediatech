@@ -1,11 +1,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-4">
-            <img class="img-thumbnail" src="{{user.image}}">
-        </div>    
-        <div class="mt-0">
-            <h5 class="mt-0">{{user.fullname}}</h5>
-            <p>Email: {{user.email}}</p>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{user.image}}">
+            <div class="card-body">
+                <h5 class="card-title">{{user.fullname}}</h5>   
+            </div>
+        </div>
+        </div>  
+        <div class="col-sm-4">
+            <h1>Profile</h1>
+            <p class="card-text"><i class="fa fa-user"></i>{{user.fullname}}</p>
+            <p class="card-text"><i class="fa fa-envelope"></i>{{user.email}}</p>
         </div>
     </div>
 </div>
