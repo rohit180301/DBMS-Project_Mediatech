@@ -26,16 +26,16 @@
     background-color: #e44b34;
     color:#fff;
 }
-.btn-instagram{
-    background-color:rgb(195, 42 ,163);
+.btn-linkedin{
+    background-color:royalblue;
     border-radius : 0%;
     color:#fff;
     width : auto;
 }
-.btn-instagram:link,
-.btn-instagram:visited{
+.btn-linkedin:link,
+.btn-linkedin:visited{
     text-decoration: none;
-    background-color:rgb(195, 42 ,163);
+    background-color:royalblue;
     color:#fff;
 }
 #welcome{

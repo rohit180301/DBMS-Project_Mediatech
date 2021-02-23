@@ -16,6 +16,7 @@ const User = require('./models/user');
 //Link passports to the server
 require('./passport/google.passport');
 require('./passport/facebook-passport');
+require('./passport/Linkedin-passport');
 //initialize application
 const app = express();
 //Express config
@@ -95,6 +96,20 @@ app.get('/auth/facebook/callback',
     // Successful authentication, redirect home.
         res.redirect('/profile');
 });  
+//HANDLE LINKEDIN AUTH ROUTE
+app.get('/auth/linkedin',
+    passport.authenticate('linkedin',{
+        scope: ['r_emailaddress', 'r_liteprofile']
+    }));
+
+app.get('/auth/linkedin/callback', 
+    passport.authenticate('linkedin', {
+        failureRedirect: '/' 
+    }),
+    (req, res) => {
+        // Successful authentication, redirect home.
+        res.redirect('/profile');
+    });
 //Handle profile route 
 app.get('/profile',(req,res) => {
     User.findById({_id: req.user._id})

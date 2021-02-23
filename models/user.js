@@ -35,7 +35,7 @@ const userSchema = new Schema({
     google: {
         type:String
     },
-    instagram: {
+    linkedin: {
         type:String
     }
 });
