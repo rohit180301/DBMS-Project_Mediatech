@@ -125,6 +125,15 @@ app.get('/profile',ensureAuthentication, (req,res) => {
         });
     })
 });
+//Handle route for all users
+app.get('/users',(req,res) => {
+    User.find({})
+    .then((users)=> {
+        res.render('users',{
+            users:users
+        });    
+    });
+});
 //Handle phone post route
 app.post('/addPhone', (req, res) => {
     const phone = req.body.phone;
@@ -137,7 +146,7 @@ app.post('/addPhone', (req, res) => {
         });
     });
 });
-//Handle phone post route
+//Handle Location post route
 app.post('/addLocation',(req,res) => {
     const location = req.body.location;
     User.findById({_id: req.user._id})
@@ -149,7 +158,18 @@ app.post('/addLocation',(req,res) => {
         });
     });
 });
-
+//Handle College post route
+app.post('/addcollege',(req,res) => {
+    const college = req.body.college;
+    User.findById({_id: req.user._id})
+    .then((user) => {
+        user.college = college;
+        user.save()
+        .then(() => {
+            res.redirect('/profile');
+        });
+    });
+});
 //Handle User logout route
 app.get('/logout',(req, res) =>{
     req.logout();

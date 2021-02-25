@@ -28,6 +28,9 @@ const userSchema = new Schema({
     location: {
         type:String
     },
+    college: {
+        type:String
+    },
     fbTokens : Array,
     facebook: {
         type:String  

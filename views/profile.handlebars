@@ -17,7 +17,7 @@
             {{else}}
             <form action="/addPhone" method="POST" class="form-inline">
                 <div class="form-group mx-sm-3 mb-2">
-                    <input type="number" name="phone" class="form-control" placeholder="Enter phone number">
+                    <input type="number" name="phone" class="form-control" placeholder="Enter phone number" required>
                 </div>
                 <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-check"></i></button>
             </form>
@@ -27,7 +27,17 @@
             {{else}}
             <form action="/addLocation" method="POST" class="form-inline">
                 <div class="form-group mx-sm-3 mb-2">
-                    <input type="text" name="location" class="form-control" placeholder="Enter your location / city and country">
+                    <input type="text" name="location" class="form-control" placeholder="Enter your location / city and country" required>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-check"></i></button>
+            </form>
+            {{/if}}
+            {{#if user.college}}
+            <p class="card-text"><i class="fa fa-map-marker"></i> {{user.college}}</p>
+            {{else}}
+            <form action="/addcollege" method="POST" class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" name="college" class="form-control" placeholder="Enter your college name" required>
                 </div>
                 <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-check"></i></button>
             </form>
