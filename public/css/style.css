@@ -60,3 +60,11 @@ h1{
 .red{
     color:green;
 }
+.reddish{
+    color: red;
+}
+#comment-user-picture{
+    width: 65px;
+    height: auto;
+}
+

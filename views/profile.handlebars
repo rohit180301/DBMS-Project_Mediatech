@@ -59,6 +59,11 @@
                     <a href="/editPost/{{_id}}">
                         <i class="fa fa-pencil"></i>
                     </a>
+                    <form action="/{{_id}}?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </form>
                 </p>
             </div>
         </div>
