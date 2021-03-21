@@ -24,6 +24,12 @@
                 </li>
                 {{#if user}}
                 <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="https://forms.gle/6WU5pHy8jopcJSiW8">Register as Mentor</a>
+                </li>
+                {{else}}
+                {{/if}}
+                {{#if user}}
+                <li class="nav-item">
                     <a class="navbar-brand" href="/logout"><i class="fa fa-sign-out">Logout</i></a>
                 </li>
                 {{else}}

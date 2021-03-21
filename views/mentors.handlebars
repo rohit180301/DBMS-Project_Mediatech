@@ -1,0 +1,17 @@
+<div class="container-fluid">
+    <div class="row">
+        {{#each mentors}}
+        <div class="col-sm-3">
+            <div class="card">
+                <img class="card-img-top" src="{{image}}">
+                <div class="card-body">
+                    <a href="/mentor/{{id}}">
+                        <h5 class="card-title">{{fullname}}</h5>
+                    </a>
+                    <p id="address" class="card-title">{{qualification}}</p>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

@@ -15,6 +15,7 @@ const keys = require('./config/keys');
 //Load models
 const User = require('./models/user');
 const Post = require('./models/post');
+const Mentor = require('./models/mentor');
 //Link passports to the server
 require('./passport/google.passport');
 require('./passport/facebook-passport');
@@ -136,6 +137,24 @@ app.get('/users', ensureAuthentication, (req,res) => {
     .then((users)=> {
         res.render('users',{
             users:users
+        });    
+    });
+});
+//Display one mentor profile
+app.get('/mentor/:id', (req,res) => {
+    Mentor.findById({_id: req.params.id})
+    .then((mentor) => {
+        res.render('mentor', {
+            mentor: mentor
+        });
+    });
+});
+//Handle route for all mentors
+app.get('/mentors', ensureAuthentication, (req,res) => {
+    Mentor.find({})
+    .then((mentors)=> {
+        res.render('mentors',{
+            mentors:mentors
         });    
     });
 });

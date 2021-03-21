@@ -1,5 +1,6 @@
 <div class="container">
     <div class="row">
+        <pre>  </pre>
         <div class="col-sm-4">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" src="{{user.image}}" alt="Card image cap">
@@ -10,8 +11,19 @@
         </div>
         <div class="col-sm-4">
             <h1>Profile</h1>
+            <pre>  </pre>
             <p>Name: <span class="red">{{user.fullname}}</span></p>
             <p>Email: <span class="red">{{user.email}}</span></p>
+            {{#if user.phone}}
+            <p>Contact Numnber: <span class="red">{{user.phone}}</span></p>
+            {{else}}
+            <p>Contact Number: <span class="red">Unknown</span></p>
+            {{/if}}
+            {{#if user.location}}
+            <p>Location: <span class="red">{{user.location}}</span></p>
+            {{else}}
+            <p>Location: <span class="red">Unknown</span></p>
+            {{/if}}
             {{#if user.college}}
             <p>College: <span class="red">{{user.college}}</span></p>
             {{else}}
