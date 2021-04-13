@@ -131,6 +131,7 @@ app.get('/profile',ensureAuthentication, (req,res) => {
         });
     });
 });
+/*
 //Handle route for all users
 app.get('/users', ensureAuthentication, (req,res) => {
     User.find({})
@@ -140,6 +141,7 @@ app.get('/users', ensureAuthentication, (req,res) => {
         });    
     });
 });
+*/
 //Display one mentor profile
 app.get('/mentor/:id', (req,res) => {
     Mentor.findById({_id: req.params.id})
@@ -158,7 +160,9 @@ app.get('/mentors', ensureAuthentication, (req,res) => {
         });    
     });
 });
+
 //Display one user profile
+/*
 app.get('/user/:id', (req,res) => {
     User.findById({_id: req.params.id})
     .then((user) => {
@@ -167,6 +171,7 @@ app.get('/user/:id', (req,res) => {
         });
     });
 });
+*/
 //Handle phone post route
 app.post('/addPhone', (req, res) => {
     const phone = req.body.phone;
