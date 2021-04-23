@@ -1,5 +1,84 @@
 <div class="container">
     <br>
+    <br>
+    
+    
+    {{!-- Search Box Starts --}}
+    
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                background: #f2f2f2;
+                font-family: 'Open Sans', sans-serif;
+            }
+    
+            .search {
+                width: 100%;
+                position: relative;
+                display: flex;
+            }
+    
+            .searchTerm {
+                width: 100%;
+                border: 3px solid #00B4CC;
+                border-right: none;
+                padding: 5px;
+                height: 36px;
+                border-radius: 5px 0 0 5px;
+                outline: none;
+                color: #9DBFAF;
+            }
+    
+            .searchTerm:focus {
+                color: #00B4CC;
+            }
+    
+            .searchButton {
+                width: 40px;
+                height: 36px;
+                border: 1px solid #00B4CC;
+                background: #00B4CC;
+                text-align: center;
+                color: #fff;
+                border-radius: 0 5px 5px 0;
+                cursor: pointer;
+                font-size: 20px;
+            }
+    
+            /Resize the wrap to see the search bar change !/ .wrap {
+                width: 30%;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
+        <script>
+
+            function checkInput() {
+                var query = document.getElementById('qwerty').value;
+                window.find(query);
+                return true;
+            }
+
+        </script>
+    </head>
+    
+    <body>
+        <div class="wrap">
+            <div class="search">
+                <input id="qwerty" type="text" class="searchTerm" placeholder="What are you looking for?">
+                <button onclick="checkInput()" type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </body>
+    <br>
+{{!-- Search Box Ends --}}
+
     {{#each posts}}
     <div class="media">
         <img class="mr-3 post-user-pic" src="{{user.image}}">
